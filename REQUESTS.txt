@@ -1,0 +1,55 @@
+GET
+http://localhost:9080/subjects/undergraduate/cs/1/1
+http://localhost:9080/students/15001008
+
+
+
+POST
+http://localhost:9080/subjects/
+{
+	"name": "mathstd",
+    "code": "SCS20004",
+    "year": 1,
+    "semester": 1,
+    "undergraduate": true,
+    "stream": "cs"
+}
+
+http://localhost:9080/students/register
+{ "name": "pasindu",
+"registration_number": "15001008",
+"password_hash": "pass",
+"registered_year": "2018",
+"undergraduate": true,
+"stream":"cs"	
+}
+
+http://localhost:9080/students/15001008/subjects/1/1
+[{"name":"Maths" ,  "_id":"SCS20001" },
+{"name":"Mathsasdas" ,  "_id":"SCS20002" },
+{"name":"Mathsasdas" ,  "_id":"SCS20003" }
+]
+
+
+http://localhost:9080/exams/
+{
+	 "date":"2018.11.15",
+    "code": "EX003",
+    "year": 1,
+    "semester": 1,
+    "undergraduate": true,
+    "stream": "cs"
+}
+
+http://localhost:9080/members/register
+{
+	"username":"admin",
+	"password":"pass"
+}
+
+http://localhost:9080/students/login
+{
+	"id":"15001008",
+	"password":"pass"
+}
+
