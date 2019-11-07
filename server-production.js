@@ -4,8 +4,8 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/dexternet.southeastasia.cloudapp.azure.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/dexternet.southeastasia.cloudapp.azure.com/fullchain.pem')
+  key: fs.readFileSync('/home/ubuntu/privkey.pem'),
+  cert: fs.readFileSync('/home/ubuntu/fullchain.pem')
 };
 
 var socket_io = require('socket.io');
