@@ -1,20 +1,8 @@
-// module.exports = {
-//     apps : [{
-      
-//     //   env: {
-//     //     NODE_ENV: "development",
-//     //   },
-//     //   env_production: {
-//     //     NODE_ENV: "production",
-//     //   }
-//     }]
-//   }
-
-  module.exports = [{
-    name: "server",
+module.exports = [{
+    name: "gz-server",
     script: "./server.js",
-    error_file: '/home/ubuntu/www/logs/err.log',
-    out_file: '/home/ubuntu/www/logs/out.log',
-    log_file: '/home/ubuntu/www/logs/combined.log',
+    error_file: '/home/ubuntu/www/logs/gz-server-err.log',
+    out_file: '/home/ubuntu/www/logs/gz-server-out.log',
+    log_file: '/home/ubuntu/www/logs/gz-server-combined.log',
     time: true
-  }]
+}]
