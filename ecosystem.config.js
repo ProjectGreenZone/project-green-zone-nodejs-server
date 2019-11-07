@@ -10,11 +10,11 @@
 //     }]
 //   }
 
-  modules.exports = [{
+  module.exports = [{
     name: "server",
     script: "./server.js",
-    error_file: '/home/ubuntu/www/err.log',
-    out_file: '/home/ubuntu/www/out.log',
-    log_file: '/home/ubuntu/www/combined.log',
+    error_file: '/home/ubuntu/www/logs/err.log',
+    out_file: '/home/ubuntu/www/logs/out.log',
+    log_file: '/home/ubuntu/www/logs/combined.log',
     time: true
   }]
