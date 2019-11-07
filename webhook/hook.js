@@ -9,7 +9,7 @@ gith({
     if( payload.branch === 'master' )
     {
             // Exec a shell script
-            execFile('hook.sh', function(error, stdout, stderr) {
+            execFile('./hook.sh', function(error, stdout, stderr) {
                 console.log(stdout);
                 console.log(stderr);
                 if (error !== null) {
