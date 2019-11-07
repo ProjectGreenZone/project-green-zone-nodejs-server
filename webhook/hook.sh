@@ -1,3 +1,4 @@
+rm '/home/ubuntu/www/logs/gz-server-webhook.log'
 cd ..
 echo +++++ PWD : `pwd` +++++ 
 echo +++++ Running git pull +++++ 
