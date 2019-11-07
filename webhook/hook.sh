@@ -1,3 +1,4 @@
 echo "Running Hook Script !"
-
-nodemon ../server.js
+cd ..
+git pull
+pm2 restart startscript
