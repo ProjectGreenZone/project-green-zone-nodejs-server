@@ -2,6 +2,8 @@ cd ..
 echo +++++ PWD : `pwd` +++++ 
 echo +++++ Running git pull +++++ 
 git pull
+echo +++++ Updating npm dependencies +++++ 
+npm i 
 echo +++++ Removing log files ! +++++
 rm '/home/ubuntu/www/logs/gz-server-err.log'
 rm '/home/ubuntu/www/logs/gz-server-out.log'

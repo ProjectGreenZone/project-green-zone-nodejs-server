@@ -7,17 +7,22 @@ const TrackerSchema = mongoose.Schema ({
   public_key: String,
   history_count: Number,
   history: [{
-    time: Date,
-    data: {
-      location: {
-        lat: Number,
-        lon: Number
-      },
+    _id: Date,
+    position: {
+      accuracy: Number,
+      altitude: Number,
+      lat: Number,
+      lon: Number,
+      speed: Number
+    },
+    battery: {
+      level: Number,
+      charging: Boolean
     }
   }],
 });
 
-const Tracker = module.exports = mongoose.model('user', TrackerSchema);
+const Tracker = module.exports = mongoose.model('tracker', TrackerSchema);
 
 module.exports.getTrackerById = function(id, callback) {
   Tracker.findById(id, callback);
