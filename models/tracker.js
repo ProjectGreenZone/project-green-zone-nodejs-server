@@ -35,3 +35,7 @@ module.exports.addTracker = function(newTracker, callback) {
 module.exports.updateTracker = function(newTracker, callback) {
   Tracker.updateOne(newTracker, callback);
 }
+
+module.exports.getAllTrackers = function(callback) {
+  Tracker.find({}, callback);
+}

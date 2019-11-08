@@ -3,16 +3,21 @@ const router = express.Router();
 const Tracker = require('../models/tracker');
 const _ = require('lodash');
 
-const history_count = 10
+const history_count = 5
 
-updateCallBack = function (err, tracker)  {
-    console.log("Call back")
 
-    socket.to('main').emit('message', { tracker: tracker });
-}
 
 function createRouter(socket){
+    updateCallBack = function (err, tracker)  {
+        console.log("Call back")     
+    }
+
+    sendDataToSocket = function (tracker){
+        socket.to('main').emit('tracker update', { tracker });
+    }
+    
     router.post('/track', (req, res, next) =>{
+        console.log(req.body)
         // Parse boolean variables in request body
         if (req.body.battery.charging == "true"){
             charging = true;
@@ -42,14 +47,18 @@ function createRouter(socket){
 
                 // sort history points by time
                 tracker.history = _.sortBy(tracker.history, [function(h) { return h._id; }]);
+                _.reverse(tracker.history);
 
                 // Maintain history length
                 if(tracker.history.length >= tracker.history_count) {
                     tracker.history = _.slice(tracker.history, 0, tracker.history_count)
                 }
 
+                // Send new data 
+                sendDataToSocket(tracker)
                 // Update database
                 Tracker.updateTracker(tracker, updateCallBack)
+                
             } else { // Tracker does not exist create new
                 let newTracker = new Tracker ({
                     _id: req.body.device.id,
@@ -72,12 +81,26 @@ function createRouter(socket){
                       }
                     }],
                 });
+                // Send new data 
+                sendDataToSocket(newTracker)
+                // Update Database
                 Tracker.addTracker(newTracker, updateCallBack)
             }
         })
 
         res.json('This is backend, Got your data !');
         
+    
+    });
+
+    router.get('/',(req, res, next) =>{
+        console.log("sending all trackers")
+        Tracker.getAllTrackers((err, trackers) =>{
+            for (t of trackers) {
+                sendDataToSocket(t)
+            }
+        })
+        res.json('Trackers on the way');
     
     });
     
