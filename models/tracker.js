@@ -7,7 +7,7 @@ const TrackerSchema = mongoose.Schema ({
   public_key: String,
   history_count: Number,
   history: [{
-    _id: Date,
+    _id: Number,
     position: {
       accuracy: Number,
       altitude: Number,

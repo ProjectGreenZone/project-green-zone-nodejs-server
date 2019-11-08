@@ -5,13 +5,6 @@ const _ = require('lodash');
 
 const history_count = 5
 
-const toLocalTime = function(time) {
-    var d = new Date(time);
-    var offset = (new Date().getTimezoneOffset() / 60) * -1;
-    var n = new Date(d.getTime() + offset);
-    return n;
-  };
-
 
 function createRouter(socket){
     updateCallBack = function (err, tracker)  {
@@ -35,7 +28,7 @@ function createRouter(socket){
             if(tracker){ // Tracker exists update database
                 // Add new history point
                 let newHistoryPoint = {
-                    _id: toLocalTime(Number(req.body.position.time)),
+                    _id: Number(req.body.position.time),
                     position: {
                         accuracy: Number(req.body.position.accuracy),
                         altitude: Number(req.body.position.altitude),
@@ -72,7 +65,7 @@ function createRouter(socket){
                     public_key: "None",
                     history_count: history_count,
                     history: [{
-                      _id: toLocalTime(Number(req.body.position.time)),
+                      _id: Number(req.body.position.time),
                       position: {
                         accuracy: Number(req.body.position.accuracy),
                         altitude: Number(req.body.position.altitude),
