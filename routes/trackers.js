@@ -17,7 +17,6 @@ function createRouter(socket){
     }
     
     router.post('/track', (req, res, next) =>{
-        console.log(req.body)
         // Parse boolean variables in request body
         if (req.body.battery.charging == "true"){
             charging = true;
@@ -101,6 +100,13 @@ function createRouter(socket){
             }
         })
         res.json('Trackers on the way');
+    
+    });
+
+    router.get('/delete',(req, res, next) =>{
+        console.log("deleteing all trackers")
+        Tracker.deleteAllTrackers();
+        res.json('Trackers are deleted');
     
     });
     

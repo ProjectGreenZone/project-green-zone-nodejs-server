@@ -39,3 +39,7 @@ module.exports.updateTracker = function(newTracker, callback) {
 module.exports.getAllTrackers = function(callback) {
   Tracker.find({}, callback);
 }
+
+module.exports.deleteAllTrackers = function() {
+  Tracker.collection.drop();
+}
