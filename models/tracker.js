@@ -44,8 +44,9 @@ module.exports.updateTracker = function(conditions, newTracker, callback) {
     };
     console.log("deleted")
     console.log(newTracker)
+    callback()
     // deleted at most one tank document
-    newTracker.save(callback);
+    // newTracker.save(callback);
   });
 }
 
