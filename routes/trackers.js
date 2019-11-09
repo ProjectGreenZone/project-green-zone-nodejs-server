@@ -62,7 +62,7 @@ function createRouter(socket){
                 let newTracker = new Tracker ({
                     _id: tracker._id,
                     pair_password: tracker.pair_password,
-                    secret: tracker.secret,
+                    secret: tracker.secret + "NEW",
                     public_key: tracker.public_key,
                     history_count: tracker.history_count,
                     history: tracker.history,
