@@ -41,7 +41,7 @@ module.exports.updateTracker = function(conditions, newTracker, callback) {
     console.log(tracker)
     tracker.remove((err)=> {
       if(err){}else{
-        console.log("deleted")
+        newTracker.save(callback);
       }
     })
   })
