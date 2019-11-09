@@ -14,7 +14,7 @@ const port = process.env.PORT || 9080;
 // Database connection
 mongoose.connect(config.database_production, { useNewUrlParser: true });
 mongoose.connection.on('connected', () => {
-  console.log('Connected to database '+config.database);
+  console.log('Connected to database '+config.database_production);
 });
 mongoose.connection.on('error', (err) => {
   console.log('Database error '+err);
