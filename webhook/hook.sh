@@ -1,6 +1,7 @@
 cd ..
 echo +++++ PWD : `pwd` +++++ 
-echo +++++ Running git pull +++++ 
+echo +++++ Running git stash and pull +++++ 
+git stash
 git pull
 echo +++++ Updating npm dependencies +++++ 
 npm i 
