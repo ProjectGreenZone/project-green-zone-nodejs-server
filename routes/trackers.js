@@ -7,15 +7,20 @@ const history_count = 5
 
 
 function createRouter(socket){
-    updateCallBack = function (err, tracker)  {
-        console.log("Call back")     
-    }
-
     sendDataToSocket = function (tracker){
         socket.to('main').emit('tracker update', { tracker });
     }
     
     router.post('/track', (req, res, next) =>{
+        // Update CallBack
+        updateCallBack = function (err, update)  {
+            console.log("Database updated")
+            console.log(update)
+            Tracker.getTrackerById(req.body.device.id, (err, tracker) => {
+                console.log(tracker)
+                sendDataToSocket(tracker)
+            })
+        }
         // Parse boolean variables in request body
         if (req.body.battery.charging == "true"){
             charging = true;
@@ -52,8 +57,6 @@ function createRouter(socket){
                     tracker.history = _.slice(tracker.history, 0, tracker.history_count)
                 }
 
-                // Send new data 
-                sendDataToSocket(tracker)
                 // Update database
                 Tracker.updateTracker(tracker, updateCallBack)
                 
@@ -79,8 +82,6 @@ function createRouter(socket){
                       }
                     }],
                 });
-                // Send new data 
-                sendDataToSocket(newTracker)
                 // Update Database
                 Tracker.addTracker(newTracker, updateCallBack)
             }
