@@ -59,9 +59,13 @@ function createRouter(socket){
                     tracker.history = _.slice(tracker.history, 0, tracker.history_count)
                 }
                 console.log(tracker.history)
+                let newTracker = new Tracker ({
+                    _id: tracker._id,
+                    history: tracker.history
+                });
 
                 // Update database
-                Tracker.updateTracker(tracker, updateCallBack)
+                Tracker.updateTracker(newTracker, updateCallBack)
                 
             } else { // Tracker does not exist create new
                 let newTracker = new Tracker ({
