@@ -69,7 +69,7 @@ function createRouter(socket){
                 });
 
                 // Update database
-                Tracker.updateTracker(condition, newTracker, updateCallBack).exec();
+                Tracker.updateTracker(condition, newTracker, updateCallBack)
                 
             } else { // Tracker does not exist create new
                 let newTracker = new Tracker ({

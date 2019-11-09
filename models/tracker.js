@@ -36,18 +36,31 @@ module.exports.addTracker = function(newTracker, callback) {
 //   Tracker.findOneAndUpdate(conditions, update, {}, callback);
 // }
 module.exports.updateTracker = function(conditions, newTracker, callback) {
-  Tracker.remove(conditions, function (err) {
-    console.log("deleting")
-    if (err) {
-      console.log("error")
-      console.log(err)
-    };
-    console.log("deleted")
-    console.log(newTracker)
-    callback()
-    // deleted at most one tank document
-    // newTracker.save(callback);
-  });
+
+  Tracker.findByIdAndRemove(conditions._id, {}, function (err) {
+      console.log("deleting")
+      if (err) {
+        console.log("error")
+        console.log(err)
+      };
+      console.log("deleted")
+      // console.log(newTracker)
+      callback()
+      // deleted at most one tank document
+      // newTracker.save(callback);
+    })
+  // Tracker.remove(conditions, function (err) {
+  //   console.log("deleting")
+  //   if (err) {
+  //     console.log("error")
+  //     console.log(err)
+  //   };
+  //   console.log("deleted")
+  //   console.log(newTracker)
+  //   callback()
+  //   // deleted at most one tank document
+  //   // newTracker.save(callback);
+  // });
 }
 
 
