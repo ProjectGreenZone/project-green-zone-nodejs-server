@@ -36,8 +36,8 @@ module.exports.addTracker = function(newTracker, callback) {
 //   Tracker.findOneAndUpdate(conditions, update, {}, callback);
 // }
 module.exports.updateTracker = function(conditions, newTracker, callback) {
-  console.log("id - "+conditions._id)
-  Tracker.getTrackerById(conditions._id, (err, tracker) => {
+  console.log("id - "+conditions.id)
+  Tracker.getTrackerById(conditions.id, (err, tracker) => {
     console.log(tracker)
     tracker.remove((err)=> {
       if(err){}else{
