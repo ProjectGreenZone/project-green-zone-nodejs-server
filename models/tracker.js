@@ -36,19 +36,15 @@ module.exports.addTracker = function(newTracker, callback) {
 //   Tracker.findOneAndUpdate(conditions, update, {}, callback);
 // }
 module.exports.updateTracker = function(conditions, newTracker, callback) {
-
-  Tracker.findByIdAndRemove(conditions._id, {}, function (err) {
-      console.log("deleting")
-      if (err) {
-        console.log("error")
-        console.log(err)
-      };
-      console.log("deleted")
-      // console.log(newTracker)
-      callback()
-      // deleted at most one tank document
-      // newTracker.save(callback);
+  console.log("id - "+conditions._id)
+  Tracker.getTrackerById(conditions._id, (err, tracker) => {
+    console.log(tracker)
+    tracker.remove((err)=> {
+      if(err){}else{
+        console.log("deleted")
+      }
     })
+  })
   // Tracker.remove(conditions, function (err) {
   //   console.log("deleting")
   //   if (err) {
