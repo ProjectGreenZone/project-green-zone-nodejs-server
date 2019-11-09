@@ -1,6 +1,6 @@
 module.exports = {
-  //database: 'mongodb://<username>:<password>@ds12226.mlab.com:12226/meanauthapp',   //prod
-  prod_database: 'mongodb+srv://admin:pass123@cluster0-dvpyf.azure.mongodb.net/test?retryWrites=true&w=majority',    //dev
+  database_production: 'mongodb+srv://admin:pass123@cluster0-dvpyf.azure.mongodb.net/givemyspace-db?retryWrites=true&w=majority',    //prod
+  // database_production: 'mongodb://localhost:27017/givemyspace-db',    //prod
   secret: 'yoursecret',
   database: 'mongodb://localhost:27017/givemyspace-db',    //dev
 }
