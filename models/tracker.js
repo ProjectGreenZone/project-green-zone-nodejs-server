@@ -33,7 +33,7 @@ module.exports.addTracker = function(newTracker, callback) {
 }
 
 module.exports.updateTracker = function(conditions, update, callback) {
-  Tracker.findOneAndUpdate(conditions, update, callback);
+  Tracker.findOneAndUpdate(conditions, update, {}, callback);
 }
 
 module.exports.getAllTrackers = function(callback) {
