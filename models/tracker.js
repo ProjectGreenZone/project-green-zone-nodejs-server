@@ -37,7 +37,12 @@ module.exports.addTracker = function(newTracker, callback) {
 // }
 module.exports.updateTracker = function(conditions, newTracker, callback) {
   Tracker.deleteOne(conditions, function (err) {
-    if (err) return handleError(err);
+    console.log("deleting")
+    if (err) {
+      console.log("error")
+      console.log(err)
+    };
+    console.log("deleted")
     // deleted at most one tank document
     newTracker.save(callback);
   });
