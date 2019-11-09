@@ -16,7 +16,6 @@ function createRouter(socket){
         // Update CallBack
         updateCallBack = function (err, update)  {
             console.log("Database updated")
-            console.log(update)
             Tracker.getTrackerById(req.body.device.id, (err, tracker) => {
                 console.log(tracker)
                 sendDataToSocket(tracker)
@@ -57,19 +56,18 @@ function createRouter(socket){
                 if(tracker.history.length >= tracker.history_count) {
                     tracker.history = _.slice(tracker.history, 0, tracker.history_count)
                 }
-                console.log(tracker.history)
-                let condition = { id: tracker._id }
+
                 let newTracker = new Tracker ({
                     _id: tracker._id,
                     pair_password: tracker.pair_password,
-                    secret: tracker.secret + "NEW",
+                    secret: tracker.secret,
                     public_key: tracker.public_key,
                     history_count: tracker.history_count,
                     history: tracker.history,
                 });
 
                 // Update database
-                Tracker.updateTracker(condition, newTracker, updateCallBack)
+                Tracker.updateTracker(tracker._id, newTracker, updateCallBack)
                 
             } else { // Tracker does not exist create new
                 let newTracker = new Tracker ({

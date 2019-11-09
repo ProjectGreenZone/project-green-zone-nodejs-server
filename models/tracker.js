@@ -32,31 +32,22 @@ module.exports.addTracker = function(newTracker, callback) {
   newTracker.save(callback);
 }
 
-// module.exports.updateTracker = function(conditions, update, callback) {
-//   Tracker.findOneAndUpdate(conditions, update, {}, callback);
-// }
-module.exports.updateTracker = function(conditions, newTracker, callback) {
-  console.log("id - "+conditions.id)
-  Tracker.getTrackerById(conditions.id, (err, tracker) => {
-    console.log(tracker)
-    tracker.remove((err)=> {
-      if(err){}else{
-        newTracker.save(callback);
-      }
-    })
+module.exports.updateTracker = function(id, newTracker, callback) {
+  Tracker.getTrackerById(id, (err, tracker) => {
+    if(tracker){
+      tracker.remove((err)=> {
+        if(err){
+          console.log("Error updating tracker")
+          console.log(err)
+        }else{
+          newTracker.save(callback);
+        }
+      })
+    } else {
+      console.log("No tracker to update")
+    }
+    
   })
-  // Tracker.remove(conditions, function (err) {
-  //   console.log("deleting")
-  //   if (err) {
-  //     console.log("error")
-  //     console.log(err)
-  //   };
-  //   console.log("deleted")
-  //   console.log(newTracker)
-  //   callback()
-  //   // deleted at most one tank document
-  //   // newTracker.save(callback);
-  // });
 }
 
 
