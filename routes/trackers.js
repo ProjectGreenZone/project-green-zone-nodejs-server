@@ -48,6 +48,7 @@ function createRouter(socket){
                     }
                 }
                 tracker.history.push(newHistoryPoint)
+                console.log(tracker.history)
 
                 // sort history points by time
                 tracker.history = _.sortBy(tracker.history, [function(h) { return h._id; }]);
@@ -57,6 +58,7 @@ function createRouter(socket){
                 if(tracker.history.length >= tracker.history_count) {
                     tracker.history = _.slice(tracker.history, 0, tracker.history_count)
                 }
+                console.log(tracker.history)
 
                 // Update database
                 Tracker.updateTracker(tracker, updateCallBack)
