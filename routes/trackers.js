@@ -17,7 +17,6 @@ function createRouter(socket){
         updateCallBack = function (err, update)  {
             console.log("Database updated")
             Tracker.getTrackerById(req.body.device.id, (err, tracker) => {
-                console.log(tracker)
                 sendDataToSocket(tracker)
             })
         }
