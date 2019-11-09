@@ -32,9 +32,18 @@ module.exports.addTracker = function(newTracker, callback) {
   newTracker.save(callback);
 }
 
-module.exports.updateTracker = function(conditions, update, callback) {
-  Tracker.findOneAndUpdate(conditions, update, {}, callback);
+// module.exports.updateTracker = function(conditions, update, callback) {
+//   Tracker.findOneAndUpdate(conditions, update, {}, callback);
+// }
+module.exports.updateTracker = function(conditions, newTracker, callback) {
+  Tracker.deleteOne(conditions, function (err) {
+    if (err) return handleError(err);
+    // deleted at most one tank document
+    newTracker.save(callback);
+  });
 }
+
+
 
 module.exports.getAllTrackers = function(callback) {
   Tracker.find({}, callback);
