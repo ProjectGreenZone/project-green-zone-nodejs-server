@@ -12,6 +12,7 @@ function createRouter(socket){
     }
     
     router.post('/track', (req, res, next) =>{
+        console.log(req.body)
         // Update CallBack
         updateCallBack = function (err, update)  {
             console.log("Database updated")
