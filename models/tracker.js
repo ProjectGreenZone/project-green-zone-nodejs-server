@@ -32,8 +32,8 @@ module.exports.addTracker = function(newTracker, callback) {
   newTracker.save(callback);
 }
 
-module.exports.updateTracker = function(newTracker, callback) {
-  Tracker.updateOne(newTracker, callback);
+module.exports.updateTracker = function(conditions, update, callback) {
+  Tracker.findOneAndUpdate(conditions, update, callback);
 }
 
 module.exports.getAllTrackers = function(callback) {
