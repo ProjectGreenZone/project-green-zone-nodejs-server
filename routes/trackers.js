@@ -48,7 +48,6 @@ function createRouter(socket){
                     }
                 }
                 tracker.history.push(newHistoryPoint)
-                console.log(tracker.history)
 
                 // sort history points by time
                 tracker.history = _.sortBy(tracker.history, [function(h) { return h._id; }]);
