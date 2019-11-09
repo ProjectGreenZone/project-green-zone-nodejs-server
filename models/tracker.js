@@ -36,7 +36,7 @@ module.exports.addTracker = function(newTracker, callback) {
 //   Tracker.findOneAndUpdate(conditions, update, {}, callback);
 // }
 module.exports.updateTracker = function(conditions, newTracker, callback) {
-  Tracker.deleteOne(conditions, function (err) {
+  Tracker.remove(conditions, function (err) {
     console.log("deleting")
     if (err) {
       console.log("error")
